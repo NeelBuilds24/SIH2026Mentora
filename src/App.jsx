@@ -178,6 +178,142 @@ const curriculumCourseData = [
   },
 ]
 
+const roleProfiles = {
+  'Data Analyst': {
+    required: {
+      Python: 80,
+      SQL: 80,
+      'Power BI': 75,
+      Statistics: 70,
+      'Data Visualization': 70,
+    },
+    industryDemand: {
+      Python: 92,
+      SQL: 88,
+      'Power BI': 76,
+      Statistics: 70,
+      'Data Visualization': 72,
+    },
+    courseTitle: 'Advanced Data Analytics',
+    courseMatch: 87,
+    focusSkills: ['SQL', 'Power BI', 'Data Visualization'],
+  },
+  'Business Analyst': {
+    required: {
+      Python: 60,
+      SQL: 70,
+      'Power BI': 60,
+      Statistics: 65,
+      'Data Visualization': 65,
+    },
+    industryDemand: {
+      Python: 72,
+      SQL: 78,
+      'Power BI': 70,
+      Statistics: 68,
+      'Data Visualization': 74,
+    },
+    courseTitle: 'Business Intelligence Essentials',
+    courseMatch: 72,
+    focusSkills: ['Power BI', 'SQL', 'Statistics'],
+  },
+  'BI Analyst': {
+    required: {
+      Python: 50,
+      SQL: 75,
+      'Power BI': 85,
+      Statistics: 65,
+      'Data Visualization': 75,
+    },
+    industryDemand: {
+      Python: 68,
+      SQL: 82,
+      'Power BI': 90,
+      Statistics: 66,
+      'Data Visualization': 78,
+    },
+    courseTitle: 'BI Reporting and Dashboarding',
+    courseMatch: 68,
+    focusSkills: ['Power BI', 'Data Visualization', 'SQL'],
+  },
+}
+
+const learnerProfiles = {
+  'Data Analytics': {
+    learnerName: 'Rahul',
+    education: 'B.Tech / Diploma',
+    currentSkills: {
+      Python: 80,
+      SQL: 40,
+      'Data Visualization': 55,
+      'Power BI': 20,
+      Statistics: 65,
+    },
+  },
+  'Cloud Computing': {
+    learnerName: 'Rahul',
+    education: 'B.Tech / Diploma',
+    currentSkills: {
+      Python: 68,
+      SQL: 42,
+      'Cloud Architecture': 48,
+      'AWS/Azure Services': 35,
+      'DevOps Automation': 30,
+    },
+  },
+  'Cybersecurity': {
+    learnerName: 'Rahul',
+    education: 'B.Tech / Diploma',
+    currentSkills: {
+      Python: 62,
+      'Network Defense': 48,
+      'Threat Analysis': 55,
+      'Endpoint Security': 32,
+      'Digital Forensics': 28,
+    },
+  },
+  'EV Technician': {
+    learnerName: 'Rahul',
+    education: 'B.Tech / Diploma',
+    currentSkills: {
+      'EV Safety': 72,
+      'Battery Diagnostics': 45,
+      'Charging Systems': 30,
+      'Power Electronics': 36,
+      'Vehicle Telematics': 52,
+    },
+  },
+}
+
+const districtDemandSignals = {
+  Pune: {
+    industryBias: 'High demand in analytics and digital operations',
+    jobBoost: 4,
+  },
+  Mumbai: {
+    industryBias: 'Strong demand in data-driven business roles',
+    jobBoost: 5,
+  },
+  Nagpur: {
+    industryBias: 'Balanced demand across digital and industrial roles',
+    jobBoost: 3,
+  },
+}
+
+const learningPathTemplates = {
+  SQL: { label: 'Advanced SQL', priority: 'High', level: 'Intermediate', reason: 'Your SQL proficiency is the most significant blocker to role readiness.' },
+  'Power BI': { label: 'Power BI Fundamentals', priority: 'Critical', level: 'Beginner', reason: 'High industry demand and a major current skill gap.' },
+  'Data Visualization': { label: 'Data Visualization Studio', priority: 'Medium', level: 'Intermediate', reason: 'Visualization is a required communication skill for analytics roles.' },
+  Statistics: { label: 'Applied Statistics', priority: 'Low', level: 'Intermediate', reason: 'Strong foundation already exists; this step strengthens evidence-based reporting.' },
+  Python: { label: 'Python for Analytics', priority: 'Ready', level: 'Advanced', reason: 'This is already a strength and supports next-stage analytics work.' },
+  'Cloud Architecture': { label: 'Cloud Architecture Lab', priority: 'High', level: 'Intermediate', reason: 'Architecture and deployment readiness are essential for cloud roles.' },
+  'AWS/Azure Services': { label: 'Cloud Service Deployment', priority: 'High', level: 'Intermediate', reason: 'Service-level fluency is critical in cloud hiring.' },
+  'Threat Analysis': { label: 'Threat Modeling', priority: 'Medium', level: 'Intermediate', reason: 'Threat analysis drives security assessment and detection work.' },
+  'Network Defense': { label: 'Network Defense Lab', priority: 'High', level: 'Intermediate', reason: 'This gap directly affects cybersecurity operations readiness.' },
+  'Battery Diagnostics': { label: 'Battery Diagnostics Workshop', priority: 'Critical', level: 'Intermediate', reason: 'Critical EV servicing capability with high hiring demand.' },
+  'Charging Systems': { label: 'EV Charging Systems', priority: 'High', level: 'Beginner', reason: 'Infrastructure expertise is growing quickly in EV technician hiring.' },
+}
+
 function buildLinePath(values, width, height, padding) {
   const max = Math.max(...values)
   const min = Math.min(...values)
@@ -199,6 +335,9 @@ function App() {
   const [activeNav, setActiveNav] = useState('Dashboard')
   const [selectedCourse, setSelectedCourse] = useState('Data Analytics')
   const [showReport, setShowReport] = useState(false)
+  const [selectedInterest, setSelectedInterest] = useState('Data Analytics')
+  const [selectedTargetRole, setSelectedTargetRole] = useState('Data Analyst')
+  const [selectedLearnerDistrict, setSelectedLearnerDistrict] = useState('Pune')
 
   const selectedDistrictData = useMemo(
     () => districtData.find((item) => item.district === selectedDistrict) ?? districtData[0],
@@ -208,6 +347,113 @@ function App() {
   const selectedCourseData = useMemo(
     () => curriculumCourseData.find((item) => item.course === selectedCourse) ?? curriculumCourseData[0],
     [selectedCourse],
+  )
+
+  const learnerProfile = useMemo(
+    () => learnerProfiles[selectedInterest] ?? learnerProfiles['Data Analytics'],
+    [selectedInterest],
+  )
+
+  const currentLearnerSkills = learnerProfile.currentSkills
+  const requiredLearnerSkills = roleProfiles[selectedTargetRole]?.required ?? roleProfiles['Data Analyst'].required
+  const chosenRoleProfile = roleProfiles[selectedTargetRole] ?? roleProfiles['Data Analyst']
+
+  const learnerSkillRows = useMemo(() => {
+    const allSkills = Array.from(new Set([...Object.keys(currentLearnerSkills), ...Object.keys(requiredLearnerSkills)]))
+    return allSkills.map((skill) => {
+      const currentLevel = currentLearnerSkills[skill] ?? 0
+      const requiredLevel = requiredLearnerSkills[skill] ?? 0
+      const gap = requiredLevel - currentLevel
+      let priority = 'Ready'
+      if (gap > 40) priority = 'Critical'
+      else if (gap >= 26) priority = 'High'
+      else if (gap >= 11) priority = 'Low'
+
+      return {
+        skill,
+        currentLevel,
+        requiredLevel,
+        gap,
+        priority,
+      }
+    }).sort((a, b) => b.gap - a.gap)
+  }, [currentLearnerSkills, requiredLearnerSkills])
+
+  const jobReadiness = useMemo(() => {
+    const readinessScores = learnerSkillRows.map((item) => {
+      const normalized = item.requiredLevel === 0 ? 100 : Math.min(100, (item.currentLevel / item.requiredLevel) * 100)
+      return normalized
+    })
+
+    const avg = readinessScores.reduce((sum, value) => sum + value, 0) / readinessScores.length
+    return Math.round(avg)
+  }, [learnerSkillRows])
+
+  const biggestSkillGap = learnerSkillRows[0]
+  const nextBestSkill = biggestSkillGap ?? { skill: 'Power BI', gap: 55, currentLevel: 20, requiredLevel: 75 }
+
+  const recommendedPathSteps = useMemo(() => {
+    const prioritySkills = [...learnerSkillRows].sort((a, b) => b.gap - a.gap).slice(0, 3)
+    return [
+      {
+        step: 'CURRENT',
+        title: 'Your Skills',
+        detail: Object.entries(currentLearnerSkills).slice(0, 3).map(([skill, value]) => `${skill} ${value}%`).join(' · '),
+        priority: 'Current',
+        level: 'Current',
+      },
+      ...prioritySkills.map((item, index) => {
+        const template = learningPathTemplates[item.skill] ?? {
+          label: item.skill,
+          priority: item.priority,
+          level: item.gap > 50 ? 'Intermediate' : 'Beginner',
+          reason: 'Targeted upskilling to close the largest skill gap in the selected role.',
+        }
+        return {
+          step: `STEP ${index + 1}`,
+          title: template.label,
+          detail: template.reason,
+          priority: template.priority,
+          level: template.level,
+        }
+      }),
+      {
+        step: 'TARGET',
+        title: selectedTargetRole,
+        detail: 'Role-ready outcome based on industry demand and current skill alignment.',
+        priority: 'Target',
+        level: 'Goal',
+      },
+    ]
+  }, [currentLearnerSkills, learnerSkillRows, selectedTargetRole])
+
+  const roleCompatibility = useMemo(() => {
+    return Object.entries(roleProfiles).map(([role, profile]) => {
+      const commonSkills = Object.keys(profile.required).filter((skill) => currentLearnerSkills[skill] !== undefined)
+      const score = commonSkills.length === 0
+        ? 0
+        : Math.round(
+          commonSkills.reduce((sum, skill) => sum + Math.min(currentLearnerSkills[skill] ?? 0, profile.required[skill]), 0)
+          / commonSkills.reduce((sum, skill) => sum + profile.required[skill], 0)
+          * 100,
+        )
+
+      return {
+        role,
+        match: Math.max(40, Math.min(99, score + (districtDemandSignals[selectedLearnerDistrict]?.jobBoost ?? 0) + (role === selectedTargetRole ? 8 : 0))),
+      }
+    }).sort((a, b) => b.match - a.match)
+  }, [currentLearnerSkills, selectedLearnerDistrict, selectedTargetRole])
+
+  const recommendedCourse = {
+    title: chosenRoleProfile.courseTitle,
+    match: chosenRoleProfile.courseMatch,
+    why: chosenRoleProfile.focusSkills.join(', '),
+  }
+
+  const industryDemandSummary = useMemo(
+    () => Object.entries(chosenRoleProfile.industryDemand).map(([skill, demand]) => ({ skill, demand })),
+    [chosenRoleProfile],
   )
 
   const overallGap = useMemo(
@@ -611,6 +857,246 @@ function App() {
     </main>
   )
 
+  const renderLearnerPathway = (
+    <main className="mt-6 space-y-6">
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Learner Pathway</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">Personalized, industry-aligned pathways based on your current skills, interests and market demand.</h2>
+          </div>
+          <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-sky-700">AI-Powered Career & Skill Intelligence</span>
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Learner Profile</h3>
+          <div className="mt-5 space-y-4">
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Name</label>
+              <input value={learnerProfile.learnerName} readOnly className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-700" />
+            </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Education</label>
+              <input value={learnerProfile.education} readOnly className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-700" />
+            </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Interest</label>
+              <select value={selectedInterest} onChange={(event) => setSelectedInterest(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-800 outline-none focus:border-sky-400 focus:bg-white">
+                {Object.keys(learnerProfiles).map((interest) => (
+                  <option key={interest} value={interest}>{interest}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Target Role</label>
+              <select value={selectedTargetRole} onChange={(event) => setSelectedTargetRole(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-800 outline-none focus:border-sky-400 focus:bg-white">
+                {Object.keys(roleProfiles).map((role) => (
+                  <option key={role} value={role}>{role}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-700">District</label>
+              <select value={selectedLearnerDistrict} onChange={(event) => setSelectedLearnerDistrict(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-800 outline-none focus:border-sky-400 focus:bg-white">
+                {Object.keys(districtDemandSignals).map((district) => (
+                  <option key={district} value={district}>{district}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Job Readiness</p>
+          <div className="mt-5 rounded-[24px] border border-sky-100 bg-sky-50 p-5">
+            <p className="text-5xl font-bold tracking-tight text-slate-900">{jobReadiness}%</p>
+            <p className="mt-2 text-sm font-medium text-slate-600">Target Role: {selectedTargetRole}</p>
+            <p className="mt-3 text-sm leading-6 text-slate-700">Your strongest area is {Object.entries(currentLearnerSkills).sort((a, b) => b[1] - a[1])[0][0]}. The largest gaps are {nextBestSkill.skill} and {learnerSkillRows.filter((item) => item.gap > 0).sort((a, b) => b.gap - a.gap)[1]?.skill ?? 'SQL'}.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Current Skill Level</h3>
+          <div className="mt-5 space-y-5">
+            {Object.entries(currentLearnerSkills).map(([skill, value]) => (
+              <div key={skill}>
+                <div className="mb-2 flex items-center justify-between text-sm text-slate-700">
+                  <span className="font-medium">{skill}</span>
+                  <span className="font-semibold text-slate-900">{value}%</span>
+                </div>
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500" style={{ width: `${value}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Why These Skills?</h3>
+          <div className="mt-5 space-y-4 text-sm text-slate-700">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Target Role</p>
+              <p className="mt-2 text-lg font-semibold text-slate-900">{selectedTargetRole}</p>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Industry Demand</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {industryDemandSummary.slice(0, 4).map((item) => (
+                  <span key={item.skill} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">{item.skill} — {item.demand}%</span>
+                ))}
+              </div>
+            </div>
+            <p className="mt-3 leading-6">
+              Mentora prioritizes {nextBestSkill.skill} because it is highly demanded for this role and your current proficiency is low. This pathway combines interest, current skills and industry demand rather than recommending a generic course.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">Your Skill Gaps</h3>
+        <div className="mt-5 overflow-x-auto">
+          <table className="min-w-full text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 text-xs uppercase tracking-[0.14em] text-slate-500">
+                <th className="pb-3 pr-4 font-semibold">Skill</th>
+                <th className="pb-3 pr-4 font-semibold">Your Level</th>
+                <th className="pb-3 pr-4 font-semibold">Required Level</th>
+                <th className="pb-3 pr-4 font-semibold">Gap</th>
+                <th className="pb-3 font-semibold">Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              {learnerSkillRows.map((item) => (
+                <tr key={item.skill} className="border-b border-slate-100 last:border-0">
+                  <td className="py-4 pr-4 font-semibold text-slate-900">{item.skill}</td>
+                  <td className="py-4 pr-4">{item.currentLevel}%</td>
+                  <td className="py-4 pr-4">{item.requiredLevel}%</td>
+                  <td className="py-4 pr-4">{item.gap}%</td>
+                  <td className="py-4 pr-4">
+                    <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${item.priority === 'Ready' ? 'bg-emerald-100 text-emerald-700' : item.priority === 'Low' ? 'bg-amber-100 text-amber-700' : item.priority === 'High' ? 'bg-orange-100 text-orange-700' : 'bg-rose-100 text-rose-700'}`}>
+                      {item.priority}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Recommended Pathway</h3>
+          <div className="mt-6 space-y-5">
+            {recommendedPathSteps.map((step, index) => (
+              <div key={`${step.step}-${step.title}`} className="relative pl-8">
+                {index !== recommendedPathSteps.length - 1 && <div className="absolute left-3 top-2 h-[calc(100%+10px)] w-px bg-slate-200" />}
+                <div className="absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-700">{step.step === 'CURRENT' ? 'C' : step.step === 'TARGET' ? 'T' : `S${index}`}</div>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">{step.step}</p>
+                      <p className="mt-2 text-lg font-semibold text-slate-900">{step.title}</p>
+                    </div>
+                    <span className="rounded-full bg-sky-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-700">{step.priority}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{step.detail}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Estimated level: {step.level}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Recommended Course</p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-900">{recommendedCourse.title}</h3>
+            <div className="mt-4 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Match</p>
+              <p className="mt-2 text-3xl font-bold text-slate-900">{recommendedCourse.match}%</p>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-slate-700">Why this course?</p>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+              <li>Covers {recommendedCourse.why}</li>
+              <li>Includes practical analytics projects</li>
+              <li>Aligns with the {selectedTargetRole} role requirements</li>
+            </ul>
+            <button type="button" className="mt-5 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white">View Learning Path</button>
+          </div>
+
+          <div className="rounded-[28px] border border-amber-100 bg-amber-50 p-6 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Recommended Next Skill</p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-900">{nextBestSkill.skill}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-700">High industry demand + significant learner skill gap.</p>
+            <div className="mt-4 space-y-2 text-sm text-slate-700">
+              <p>Industry Demand: {chosenRoleProfile.industryDemand[nextBestSkill.skill] ?? nextBestSkill.requiredLevel}%</p>
+              <p>Current Level: {nextBestSkill.currentLevel}%</p>
+              <p>Required Level: {nextBestSkill.requiredLevel}%</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Role Compatibility</h3>
+          <div className="mt-5 space-y-4">
+            {roleCompatibility.map((role) => (
+              <div key={role.role} className={`rounded-2xl border p-4 ${role.role === selectedTargetRole ? 'border-sky-200 bg-sky-50' : 'border-slate-200 bg-slate-50'}`}>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-medium text-slate-800">{role.role}</span>
+                  <span className="text-lg font-bold text-slate-900">{role.match}%</span>
+                </div>
+                <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500" style={{ width: `${role.match}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Your Next Actions</h3>
+          <ol className="mt-5 list-decimal space-y-3 pl-5 text-sm leading-6 text-slate-700">
+            {[
+              `Complete ${recommendedPathSteps[1]?.title || 'Advanced SQL'} module`,
+              `Learn ${recommendedPathSteps[2]?.title || 'Power BI'} fundamentals`,
+              'Complete an analytics project',
+              'Take AI skill assessment',
+              'Apply for Data Analyst opportunities',
+            ].map((action) => (
+              <li key={action}>{action}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">How Mentora Generated This Pathway</h3>
+        <div className="mt-5 flex flex-col gap-3 text-sm text-slate-700 md:flex-row md:items-center md:justify-between">
+          <span className="rounded-full bg-slate-100 px-3 py-2">Learner Interests</span>
+          <span className="text-slate-400">+</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2">Current Skills</span>
+          <span className="text-slate-400">+</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2">Target Role Requirements</span>
+          <span className="text-slate-400">+</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2">Industry Demand</span>
+        </div>
+        <div className="mt-5 flex items-center justify-center text-center text-sm font-medium text-slate-600">
+          <span className="rounded-full bg-sky-50 px-4 py-2 text-sky-700">Mentora Skill Intelligence Engine</span>
+        </div>
+        <div className="mt-5 text-center text-sm font-medium text-slate-700">Personalized Pathway</div>
+      </section>
+    </main>
+  )
+
   const renderCurriculumAlignment = (
     <main className="mt-6 space-y-6">
       <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
@@ -947,7 +1433,9 @@ function App() {
               ? renderSkillGap
               : activeNav === 'Curriculum Alignment'
                 ? renderCurriculumAlignment
-                : renderDashboard}
+                : activeNav === 'Learner Pathway'
+                  ? renderLearnerPathway
+                  : renderDashboard}
           </div>
         </div>
       </div>
