@@ -99,6 +99,85 @@ const skillGapData = [
   { skill: 'Logistics Coordination', required: 68, course: 62 },
 ]
 
+const curriculumCourseData = [
+  {
+    course: 'Data Analytics',
+    modules: [
+      { module: 'Database Fundamentals', relevance: 'Medium', recommendation: 'Expand SQL query optimization and real-world database projects.' },
+      { module: 'Data Visualization', relevance: 'Low', recommendation: 'Add Power BI dashboard development and stakeholder reporting practices.' },
+      { module: 'Statistics for Decision Making', relevance: 'Medium', recommendation: 'Strengthen hypothesis testing and business analytics case studies.' },
+      { module: 'Python for Analytics', relevance: 'High', recommendation: 'Extend automation workflows and hands-on ETL exercises.' },
+    ],
+    skills: [
+      { skill: 'Python', industryDemand: 92, courseCoverage: 90, recommendation: 'Maintain current depth while adding automation and data cleaning labs.' },
+      { skill: 'SQL', industryDemand: 88, courseCoverage: 40, recommendation: 'Add advanced SQL joins, performance tuning, and real dataset analysis.' },
+      { skill: 'Power BI', industryDemand: 76, courseCoverage: 10, recommendation: 'Add Power BI fundamentals, dashboard creation and business reporting to the curriculum.' },
+      { skill: 'Data Visualization', industryDemand: 72, courseCoverage: 35, recommendation: 'Introduce executive dashboard storytelling and KPI visual design tasks.' },
+      { skill: 'Excel Analytics', industryDemand: 68, courseCoverage: 58, recommendation: 'Embed forecasting and scenario planning projects for decision support.' },
+    ],
+    trainerRecommendation: 'Upskill trainers in Power BI and SQL applied analytics.',
+    assessmentRecommendation: 'Introduce project-based Power BI and SQL assessments with business case evaluation.',
+    priorityAction: 'Prioritise dashboarding and SQL capability upgrades before next cohort intake.',
+  },
+  {
+    course: 'Cloud Computing',
+    modules: [
+      { module: 'Cloud Fundamentals', relevance: 'High', recommendation: 'Reinforce basic architecture patterns and cost optimization case studies.' },
+      { module: 'Virtualization', relevance: 'Medium', recommendation: 'Add lab-based deployment exercises using managed services.' },
+      { module: 'Container Orchestration', relevance: 'Low', recommendation: 'Increase Kubernetes and service deployment practice.' },
+      { module: 'Security in Cloud', relevance: 'High', recommendation: 'Add IAAS and IAM governance scenarios suited to enterprise workloads.' },
+    ],
+    skills: [
+      { skill: 'Cloud Architecture', industryDemand: 90, courseCoverage: 78, recommendation: 'Expand design reviews for multi-tier cloud systems.' },
+      { skill: 'AWS/Azure Services', industryDemand: 88, courseCoverage: 62, recommendation: 'Add more service-level deployment and troubleshooting labs.' },
+      { skill: 'DevOps Automation', industryDemand: 82, courseCoverage: 44, recommendation: 'Add CI/CD pipelines and infrastructure-as-code assignments.' },
+      { skill: 'Cloud Security', industryDemand: 79, courseCoverage: 52, recommendation: 'Introduce identity, compliance and access control scenarios.' },
+      { skill: 'Cost Optimization', industryDemand: 74, courseCoverage: 38, recommendation: 'Add budgeting and resource optimization simulation tasks.' },
+    ],
+    trainerRecommendation: 'Train faculty on industry cloud operations, IAM and deployment practices.',
+    assessmentRecommendation: 'Use real-world deployment and cost-optimization case assessments.',
+    priorityAction: 'Update infrastructure automation and cloud security modules for industry readiness.',
+  },
+  {
+    course: 'Cybersecurity',
+    modules: [
+      { module: 'Network Security', relevance: 'High', recommendation: 'Add threat modeling and secure architecture workshops.' },
+      { module: 'Ethical Hacking Basics', relevance: 'Medium', recommendation: 'Expand reconnaissance, exploitation and safe practice simulation.' },
+      { module: 'Incident Response', relevance: 'Low', recommendation: 'Add forensics, triage and reporting workflow labs.' },
+      { module: 'Governance and Risk', relevance: 'High', recommendation: 'Introduce security policy design and risk assessment exercises.' },
+    ],
+    skills: [
+      { skill: 'Threat Analysis', industryDemand: 94, courseCoverage: 80, recommendation: 'Add threat intelligence and attack-path analysis sessions.' },
+      { skill: 'Network Defense', industryDemand: 89, courseCoverage: 56, recommendation: 'Expand firewall configuration and IDS/IPS lab work.' },
+      { skill: 'Endpoint Security', industryDemand: 84, courseCoverage: 46, recommendation: 'Include endpoint hardening and malware response exercises.' },
+      { skill: 'Digital Forensics', industryDemand: 78, courseCoverage: 22, recommendation: 'Add evidence collection and incident investigation case studies.' },
+      { skill: 'Risk Compliance', industryDemand: 72, courseCoverage: 60, recommendation: 'Embed compliance frameworks and governance review practice.' },
+    ],
+    trainerRecommendation: 'Upskill faculty in security monitoring, forensics and incident response workflows.',
+    assessmentRecommendation: 'Replace static quizzes with red-team and blue-team scenario-based assessments.',
+    priorityAction: 'Strengthen incident response and endpoint security coverage in the course plan.',
+  },
+  {
+    course: 'EV Technician',
+    modules: [
+      { module: 'EV Fundamentals', relevance: 'High', recommendation: 'Add battery management and charging system diagnostics.' },
+      { module: 'Battery Systems', relevance: 'High', recommendation: 'Expand thermal management and safety inspection modules.' },
+      { module: 'Motor & Drive Systems', relevance: 'Medium', recommendation: 'Add inverter diagnostics and torque control troubleshooting labs.' },
+      { module: 'Charging Infrastructure', relevance: 'Low', recommendation: 'Introduce DC fast charger installation and maintenance workflow.' },
+    ],
+    skills: [
+      { skill: 'EV Safety', industryDemand: 92, courseCoverage: 82, recommendation: 'Maintain safety protocol practice with updated EV fire response modules.' },
+      { skill: 'Battery Diagnostics', industryDemand: 88, courseCoverage: 52, recommendation: 'Add battery pack testing, balancing and fault diagnosis labs.' },
+      { skill: 'Charging Systems', industryDemand: 81, courseCoverage: 38, recommendation: 'Include charger installation and maintenance troubleshooting exercises.' },
+      { skill: 'Power Electronics', industryDemand: 75, courseCoverage: 30, recommendation: 'Add inverter and converter diagnostics relevant to service technicians.' },
+      { skill: 'Vehicle Telematics', industryDemand: 70, courseCoverage: 58, recommendation: 'Embed diagnostic scan tools and remote fault analysis training.' },
+    ],
+    trainerRecommendation: 'Train instructors on battery safety, diagnostics and fast-charging infrastructure.',
+    assessmentRecommendation: 'Use workshop-based skill checks for battery, charger and inverter fault diagnosis.',
+    priorityAction: 'Prioritise battery diagnostics and fast-charging maintenance in the next curriculum revision.',
+  },
+]
+
 function buildLinePath(values, width, height, padding) {
   const max = Math.max(...values)
   const min = Math.min(...values)
@@ -118,10 +197,17 @@ function App() {
   const [hoveredSector, setHoveredSector] = useState('IT & Digital')
   const [selectedDistrict, setSelectedDistrict] = useState('Mumbai')
   const [activeNav, setActiveNav] = useState('Dashboard')
+  const [selectedCourse, setSelectedCourse] = useState('Data Analytics')
+  const [showReport, setShowReport] = useState(false)
 
   const selectedDistrictData = useMemo(
     () => districtData.find((item) => item.district === selectedDistrict) ?? districtData[0],
     [selectedDistrict],
+  )
+
+  const selectedCourseData = useMemo(
+    () => curriculumCourseData.find((item) => item.course === selectedCourse) ?? curriculumCourseData[0],
+    [selectedCourse],
   )
 
   const overallGap = useMemo(
@@ -132,6 +218,51 @@ function App() {
     },
     [],
   )
+
+  const courseAlignmentData = useMemo(() => {
+    return selectedCourseData.skills.map((item) => {
+      const gap = item.industryDemand - item.courseCoverage
+      let status = 'Aligned'
+      if (gap >= 60) status = 'Critical'
+      else if (gap >= 40) status = 'High Priority'
+      else if (gap >= 20) status = 'Needs Improvement'
+      return { ...item, gap, status }
+    })
+  }, [selectedCourseData])
+
+  const courseAlignmentScore = useMemo(() => {
+    const averageCoverage = selectedCourseData.skills.reduce((sum, item) => sum + item.courseCoverage, 0) / selectedCourseData.skills.length
+    return Math.round(averageCoverage)
+  }, [selectedCourseData])
+
+  const criticalSkillGaps = useMemo(
+    () => courseAlignmentData.filter((item) => item.gap >= 40).length,
+    [courseAlignmentData],
+  )
+
+  const modulesRecommendedForUpdate = useMemo(
+    () => selectedCourseData.modules.filter((item) => item.relevance === 'Low' || item.relevance === 'Medium').length,
+    [selectedCourseData],
+  )
+
+  const curriculumStatus = courseAlignmentScore < 60 || criticalSkillGaps >= 2 ? 'Needs Update' : 'On Track'
+
+  const highestPrioritySkill = useMemo(
+    () => [...courseAlignmentData].sort((a, b) => b.gap - a.gap)[0],
+    [courseAlignmentData],
+  )
+
+  const reportDetails = useMemo(() => ({
+    course: selectedCourseData.course,
+    alignmentScore: courseAlignmentScore,
+    criticalSkillGaps,
+    recommendedCurriculumUpdates: selectedCourseData.modules
+      .filter((module) => module.relevance === 'Low' || module.relevance === 'Medium')
+      .map((module) => module.recommendation),
+    trainerRequirements: selectedCourseData.trainerRecommendation,
+    assessmentImprovements: selectedCourseData.assessmentRecommendation,
+    priorityActions: [selectedCourseData.priorityAction, ...courseAlignmentData.filter((item) => item.gap >= 40).slice(0, 2).map((item) => `${item.skill}: ${item.gap}% gap`)],
+  }), [courseAlignmentData, courseAlignmentScore, criticalSkillGaps, selectedCourseData])
 
   const lineChartWidth = 520
   const lineChartHeight = 210
@@ -480,6 +611,270 @@ function App() {
     </main>
   )
 
+  const renderCurriculumAlignment = (
+    <main className="mt-6 space-y-6">
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Curriculum Alignment</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">Compare industry skill demand with existing course coverage and identify curriculum updates.</h2>
+          </div>
+          <div className="w-full max-w-xs">
+            <label className="mb-2 block text-sm font-medium text-slate-700">Select Course</label>
+            <select
+              value={selectedCourse}
+              onChange={(event) => {
+                setSelectedCourse(event.target.value)
+                setShowReport(false)
+              }}
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-800 shadow-sm outline-none transition focus:border-sky-400 focus:bg-white"
+            >
+              {curriculumCourseData.map((course) => (
+                <option key={course.course} value={course.course}>{course.course}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-between rounded-full border border-dashed border-slate-200 bg-slate-50 px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+          <span>Prototype dataset — representative industry-demand signals</span>
+        </div>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="rounded-[22px] border border-sky-100 bg-sky-50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Industry Skill Match</p>
+          <p className="mt-3 text-4xl font-bold text-slate-900">{courseAlignmentScore}%</p>
+        </div>
+        <div className="rounded-[22px] border border-rose-100 bg-rose-50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-700">Critical Skill Gaps</p>
+          <p className="mt-3 text-4xl font-bold text-slate-900">{criticalSkillGaps}</p>
+        </div>
+        <div className="rounded-[22px] border border-amber-100 bg-amber-50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Modules Recommended for Update</p>
+          <p className="mt-3 text-4xl font-bold text-slate-900">{modulesRecommendedForUpdate}</p>
+        </div>
+        <div className="rounded-[22px] border border-emerald-100 bg-emerald-50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Curriculum Status</p>
+          <p className="mt-3 text-xl font-bold text-slate-900">{curriculumStatus}</p>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="text-xl font-semibold text-slate-900">Industry vs Curriculum Comparison</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 text-xs uppercase tracking-[0.14em] text-slate-500">
+                <th className="pb-3 pr-4 font-semibold">Skill</th>
+                <th className="pb-3 pr-4 font-semibold">Industry Demand</th>
+                <th className="pb-3 pr-4 font-semibold">Course Coverage</th>
+                <th className="pb-3 pr-4 font-semibold">Gap</th>
+                <th className="pb-3 font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courseAlignmentData.map((item) => (
+                <tr key={item.skill} className="border-b border-slate-100 last:border-0">
+                  <td className="py-4 pr-4 font-semibold text-slate-900">{item.skill}</td>
+                  <td className="py-4 pr-4">{item.industryDemand}%</td>
+                  <td className="py-4 pr-4">{item.courseCoverage}%</td>
+                  <td className="py-4 pr-4">{item.gap}%</td>
+                  <td className="py-4 pr-4">
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+                        item.status === 'Aligned'
+                          ? 'bg-emerald-100 text-emerald-700'
+                          : item.status === 'Needs Improvement'
+                            ? 'bg-amber-100 text-amber-700'
+                            : item.status === 'High Priority'
+                              ? 'bg-orange-100 text-orange-700'
+                              : 'bg-rose-100 text-rose-700'
+                      }`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Curriculum Module Analysis</h3>
+          <div className="mt-5 space-y-4">
+            {selectedCourseData.modules.map((module) => (
+              <div key={module.module} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Current Module</p>
+                    <p className="mt-2 text-lg font-semibold text-slate-900">{module.module}</p>
+                  </div>
+                  <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-700">Industry Relevance: {module.relevance}</span>
+                </div>
+                <p className="mt-4 text-sm text-slate-600">
+                  <span className="font-semibold text-slate-800">Recommendation:</span> {module.recommendation}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-emerald-50 p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Mentora Curriculum Recommendations</p>
+          <h3 className="mt-3 text-2xl font-semibold text-slate-900">{highestPrioritySkill.skill}</h3>
+          <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-700">Critical Gap</p>
+            <p className="mt-2 text-lg font-semibold text-slate-900">{highestPrioritySkill.skill}</p>
+            <p className="mt-2 text-sm text-slate-700">Industry Demand: {highestPrioritySkill.industryDemand}%</p>
+            <p className="text-sm text-slate-700">Course Coverage: {highestPrioritySkill.courseCoverage}%</p>
+            <p className="text-sm text-slate-700">Gap: {highestPrioritySkill.gap}%</p>
+          </div>
+
+          <div className="mt-5 space-y-4 text-sm text-slate-700">
+            <div>
+              <p className="font-semibold uppercase tracking-[0.14em] text-slate-500">Recommended Action</p>
+              <p className="mt-2 leading-6">“{highestPrioritySkill.recommendation}”</p>
+            </div>
+            <div>
+              <p className="font-semibold uppercase tracking-[0.14em] text-slate-500">Trainer Recommendation</p>
+              <p className="mt-2 leading-6">{selectedCourseData.trainerRecommendation}</p>
+            </div>
+            <div>
+              <p className="font-semibold uppercase tracking-[0.14em] text-slate-500">Assessment Recommendation</p>
+              <p className="mt-2 leading-6">{selectedCourseData.assessmentRecommendation}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-slate-900">Curriculum Update Plan</h3>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 text-xs uppercase tracking-[0.14em] text-slate-500">
+                <th className="pb-3 pr-4 font-semibold">Priority</th>
+                <th className="pb-3 pr-4 font-semibold">Skill/Module</th>
+                <th className="pb-3 pr-4 font-semibold">Current Status</th>
+                <th className="pb-3 font-semibold">Recommended Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courseAlignmentData.slice(0, 3).map((item, index) => {
+                const priority = item.gap >= 60 ? 'Critical' : item.gap >= 40 ? 'High' : 'Medium'
+                const currentStatus = item.courseCoverage < 50 ? 'Missing / Basic' : 'Partial'
+                const action = item.recommendation || 'Add new applied practice module.'
+                return (
+                  <tr key={item.skill} className="border-b border-slate-100 last:border-0">
+                    <td className="py-4 pr-4 font-semibold text-slate-900">{priority}</td>
+                    <td className="py-4 pr-4">{item.skill}</td>
+                    <td className="py-4 pr-4">{currentStatus}</td>
+                    <td className="py-4 pr-4">{action}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">Alignment Score Visualization</h3>
+        <div className="mt-6 space-y-5">
+          <div>
+            <div className="mb-2 flex items-center justify-between text-sm text-slate-600">
+              <span>Industry Requirements</span>
+              <span>100%</span>
+            </div>
+            <div className="h-4 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-full w-full rounded-full bg-gradient-to-r from-sky-500 to-cyan-500" />
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-2 flex items-center justify-between text-sm text-slate-600">
+              <span>Current Curriculum</span>
+              <span>{courseAlignmentScore}%</span>
+            </div>
+            <div className="h-4 overflow-hidden rounded-full bg-slate-100">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"
+                style={{ width: `${courseAlignmentScore}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <button
+          type="button"
+          onClick={() => setShowReport((value) => !value)}
+          className="rounded-full bg-gradient-to-r from-sky-600 to-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 hover:brightness-105"
+        >
+          Generate Alignment Report
+        </button>
+
+        {showReport && (
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <h3 className="text-xl font-semibold text-slate-900">Alignment Report</h3>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Selected course</p>
+                <p className="mt-2 text-xl font-bold text-slate-900">{reportDetails.course}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Overall alignment score</p>
+                <p className="mt-2 text-xl font-bold text-slate-900">{reportDetails.alignmentScore}%</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 md:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Critical skill gaps</p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+                  {courseAlignmentData.filter((item) => item.gap >= 40).map((item) => (
+                    <li key={item.skill}>{item.skill} — {item.gap}% gap</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 md:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Recommended curriculum updates</p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+                  {reportDetails.recommendedCurriculumUpdates.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Trainer requirements</p>
+                <p className="mt-2 text-sm leading-6 text-slate-700">{reportDetails.trainerRequirements}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Assessment improvements</p>
+                <p className="mt-2 text-sm leading-6 text-slate-700">{reportDetails.assessmentImprovements}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 md:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Priority actions</p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+                  {reportDetails.priorityActions.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+    </main>
+  )
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <div className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
@@ -548,7 +943,11 @@ function App() {
               </div>
             </header>
 
-            {activeNav === 'Skill Gap Analysis' ? renderSkillGap : renderDashboard}
+            {activeNav === 'Skill Gap Analysis'
+              ? renderSkillGap
+              : activeNav === 'Curriculum Alignment'
+                ? renderCurriculumAlignment
+                : renderDashboard}
           </div>
         </div>
       </div>
