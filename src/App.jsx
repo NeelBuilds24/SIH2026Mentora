@@ -300,6 +300,65 @@ const districtDemandSignals = {
   },
 }
 
+const industryDemandData = [
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'Python', district: 'Pune', demand: 92, proficiency: 'Advanced', trend: 15, period: 'Current', relatedSkills: ['SQL', 'Power BI', 'Statistics'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'SQL', district: 'Pune', demand: 88, proficiency: 'Intermediate', trend: 12, period: 'Current', relatedSkills: ['Python', 'Power BI', 'Data Visualization'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'Power BI', district: 'Pune', demand: 76, proficiency: 'Intermediate', trend: 18, period: 'Current', relatedSkills: ['SQL', 'Data Visualization', 'Excel'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'Statistics', district: 'Mumbai', demand: 70, proficiency: 'Intermediate', trend: 9, period: 'Current', relatedSkills: ['Python', 'SQL', 'Data Visualization'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'Data Visualization', district: 'Nagpur', demand: 72, proficiency: 'Intermediate', trend: 11, period: 'Emerging', relatedSkills: ['Power BI', 'Python', 'SQL'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'Cloud Architecture', district: 'Pune', demand: 90, proficiency: 'Advanced', trend: 14, period: 'Current', relatedSkills: ['AWS/Azure Services', 'Docker', 'Kubernetes'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'AWS/Azure Services', district: 'Pune', demand: 89, proficiency: 'Advanced', trend: 16, period: 'Current', relatedSkills: ['Cloud Architecture', 'Docker', 'Cloud Security'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'Docker', district: 'Pune', demand: 81, proficiency: 'Intermediate', trend: 20, period: 'Emerging', relatedSkills: ['Kubernetes', 'Cloud Architecture', 'DevOps Automation'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'Kubernetes', district: 'Mumbai', demand: 78, proficiency: 'Intermediate', trend: 17, period: 'Emerging', relatedSkills: ['Docker', 'Cloud Architecture', 'AWS/Azure Services'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'Cloud Security', district: 'Mumbai', demand: 79, proficiency: 'Intermediate', trend: 18, period: 'Emerging', relatedSkills: ['AWS/Azure Services', 'Cloud Architecture', 'Network Defense'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Network Defense', district: 'Mumbai', demand: 94, proficiency: 'Advanced', trend: 21, period: 'Current', relatedSkills: ['Threat Analysis', 'Python', 'Endpoint Security'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Threat Analysis', district: 'Mumbai', demand: 91, proficiency: 'Advanced', trend: 19, period: 'Current', relatedSkills: ['Network Defense', 'Python', 'Cloud Security'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Python', district: 'Pune', demand: 84, proficiency: 'Intermediate', trend: 13, period: 'Current', relatedSkills: ['Threat Analysis', 'Network Defense', 'Digital Forensics'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Endpoint Security', district: 'Nagpur', demand: 80, proficiency: 'Intermediate', trend: 17, period: 'Emerging', relatedSkills: ['Network Defense', 'Digital Forensics', 'Cloud Security'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Cloud Security', district: 'Pune', demand: 78, proficiency: 'Intermediate', trend: 15, period: 'Emerging', relatedSkills: ['Threat Analysis', 'Network Defense', 'AWS/Azure Services'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'Battery Diagnostics', district: 'Nashik', demand: 92, proficiency: 'Advanced', trend: 23, period: 'Current', relatedSkills: ['Battery Management Systems', 'EV Diagnostics', 'EV Safety'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'Battery Management Systems', district: 'Nashik', demand: 89, proficiency: 'Advanced', trend: 26, period: 'Emerging', relatedSkills: ['Battery Diagnostics', 'EV Diagnostics', 'Power Electronics'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'EV Diagnostics', district: 'Nagpur', demand: 85, proficiency: 'Intermediate', trend: 18, period: 'Current', relatedSkills: ['Battery Diagnostics', 'EV Safety', 'Power Electronics'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'Charging Systems', district: 'Pune', demand: 77, proficiency: 'Intermediate', trend: 14, period: 'Emerging', relatedSkills: ['Battery Diagnostics', 'EV Safety', 'Battery Management Systems'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'EV Safety', district: 'Mumbai', demand: 82, proficiency: 'Advanced', trend: 12, period: 'Current', relatedSkills: ['Battery Diagnostics', 'EV Diagnostics', 'Power Electronics'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'Power BI', district: 'Mumbai', demand: 82, proficiency: 'Intermediate', trend: 14, period: 'Emerging', relatedSkills: ['SQL', 'Python', 'Data Visualization'] },
+  { role: 'Data Analyst', sector: 'Data & Analytics', skill: 'SQL', district: 'Nagpur', demand: 80, proficiency: 'Intermediate', trend: 10, period: 'Emerging', relatedSkills: ['Python', 'Power BI', 'Statistics'] },
+  { role: 'Cloud Engineer', sector: 'Cloud Computing', skill: 'AWS/Azure Services', district: 'Nagpur', demand: 74, proficiency: 'Intermediate', trend: 12, period: 'Current', relatedSkills: ['Cloud Architecture', 'Docker', 'Kubernetes'] },
+  { role: 'Cybersecurity Analyst', sector: 'Cybersecurity', skill: 'Threat Analysis', district: 'Pune', demand: 88, proficiency: 'Advanced', trend: 16, period: 'Emerging', relatedSkills: ['Network Defense', 'Python', 'Cloud Security'] },
+  { role: 'EV Technician', sector: 'EV & Automotive', skill: 'Battery Management Systems', district: 'Pune', demand: 84, proficiency: 'Intermediate', trend: 19, period: 'Current', relatedSkills: ['Battery Diagnostics', 'EV Diagnostics', 'Power Electronics'] },
+]
+
+const skillRequirementProfiles = {
+  'Data Analyst': [
+    { skill: 'Python', proficiency: 'Advanced', demand: 92 },
+    { skill: 'SQL', proficiency: 'Intermediate', demand: 88 },
+    { skill: 'Power BI', proficiency: 'Intermediate', demand: 76 },
+    { skill: 'Statistics', proficiency: 'Intermediate', demand: 70 },
+    { skill: 'Data Visualization', proficiency: 'Intermediate', demand: 72 },
+  ],
+  'Cloud Engineer': [
+    { skill: 'Cloud Architecture', proficiency: 'Advanced', demand: 90 },
+    { skill: 'AWS/Azure Services', proficiency: 'Advanced', demand: 89 },
+    { skill: 'Docker', proficiency: 'Intermediate', demand: 81 },
+    { skill: 'Kubernetes', proficiency: 'Intermediate', demand: 78 },
+    { skill: 'Cloud Security', proficiency: 'Intermediate', demand: 79 },
+  ],
+  'Cybersecurity Analyst': [
+    { skill: 'Network Defense', proficiency: 'Advanced', demand: 94 },
+    { skill: 'Threat Analysis', proficiency: 'Advanced', demand: 91 },
+    { skill: 'Python', proficiency: 'Intermediate', demand: 84 },
+    { skill: 'Endpoint Security', proficiency: 'Intermediate', demand: 80 },
+    { skill: 'Cloud Security', proficiency: 'Intermediate', demand: 78 },
+  ],
+  'EV Technician': [
+    { skill: 'Battery Diagnostics', proficiency: 'Advanced', demand: 92 },
+    { skill: 'Battery Management Systems', proficiency: 'Advanced', demand: 89 },
+    { skill: 'EV Diagnostics', proficiency: 'Intermediate', demand: 85 },
+    { skill: 'Charging Systems', proficiency: 'Intermediate', demand: 77 },
+    { skill: 'EV Safety', proficiency: 'Advanced', demand: 82 },
+  ],
+}
+
 const learningPathTemplates = {
   SQL: { label: 'Advanced SQL', priority: 'High', level: 'Intermediate', reason: 'Your SQL proficiency is the most significant blocker to role readiness.' },
   'Power BI': { label: 'Power BI Fundamentals', priority: 'Critical', level: 'Beginner', reason: 'High industry demand and a major current skill gap.' },
@@ -338,6 +397,11 @@ function App() {
   const [selectedInterest, setSelectedInterest] = useState('Data Analytics')
   const [selectedTargetRole, setSelectedTargetRole] = useState('Data Analyst')
   const [selectedLearnerDistrict, setSelectedLearnerDistrict] = useState('Pune')
+  const [selectedIndustryDistrict, setSelectedIndustryDistrict] = useState('All Districts')
+  const [selectedIndustrySector, setSelectedIndustrySector] = useState('All Sectors')
+  const [selectedIndustryRole, setSelectedIndustryRole] = useState('All Roles')
+  const [selectedIndustryPeriod, setSelectedIndustryPeriod] = useState('Current')
+  const [selectedDemandSkill, setSelectedDemandSkill] = useState('Python')
 
   const selectedDistrictData = useMemo(
     () => districtData.find((item) => item.district === selectedDistrict) ?? districtData[0],
@@ -1097,6 +1161,491 @@ function App() {
     </main>
   )
 
+  const filteredIndustryDemand = useMemo(() => {
+    return industryDemandData.filter((item) => {
+      const districtMatch = selectedIndustryDistrict === 'All Districts' || item.district === selectedIndustryDistrict
+      const sectorMatch = selectedIndustrySector === 'All Sectors' || item.sector === selectedIndustrySector
+      const roleMatch = selectedIndustryRole === 'All Roles' || item.role === selectedIndustryRole
+      const periodMatch = item.period === selectedIndustryPeriod
+      return districtMatch && sectorMatch && roleMatch && periodMatch
+    })
+  }, [selectedIndustryDistrict, selectedIndustryRole, selectedIndustryPeriod, selectedIndustrySector])
+
+  const topIndustrySkills = useMemo(() => {
+    const skillMap = new Map()
+
+    filteredIndustryDemand.forEach((item) => {
+      const current = skillMap.get(item.skill) ?? { skill: item.skill, total: 0, count: 0 }
+      current.total += item.demand
+      current.count += 1
+      skillMap.set(item.skill, current)
+    })
+
+    return [...skillMap.values()]
+      .map((entry) => ({ ...entry, demand: Math.round(entry.total / entry.count) }))
+      .sort((a, b) => b.demand - a.demand)
+      .slice(0, 6)
+  }, [filteredIndustryDemand])
+
+  const roleDemandOverview = useMemo(() => {
+    const roleMap = new Map()
+
+    filteredIndustryDemand.forEach((item) => {
+      const current = roleMap.get(item.role) ?? { role: item.role, sector: item.sector, total: 0, count: 0, skills: new Set(), district: item.district }
+      current.total += item.demand
+      current.count += 1
+      current.skills.add(item.skill)
+      current.district = item.district
+      roleMap.set(item.role, current)
+    })
+
+    return [...roleMap.values()]
+      .map((entry) => ({
+        role: entry.role,
+        sector: entry.sector,
+        demand: Math.round(entry.total / entry.count),
+        topSkills: [...entry.skills].slice(0, 3),
+        location: entry.district,
+      }))
+      .sort((a, b) => b.demand - a.demand)
+      .slice(0, 4)
+  }, [filteredIndustryDemand])
+
+  const districtDemandOverview = useMemo(() => {
+    const districtMap = new Map()
+
+    filteredIndustryDemand.forEach((item) => {
+      const current = districtMap.get(item.district) ?? {
+        district: item.district,
+        roles: new Set(),
+        skills: new Map(),
+        demand: 0,
+        count: 0,
+      }
+
+      current.roles.add(item.role)
+      current.demand += item.demand
+      current.count += 1
+      current.skills.set(item.skill, (current.skills.get(item.skill) ?? 0) + item.demand)
+      districtMap.set(item.district, current)
+    })
+
+    return [...districtMap.values()].map((entry) => ({
+      district: entry.district,
+      roles: [...entry.roles].slice(0, 3),
+      topSkills: [...entry.skills.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([skill]) => skill),
+      demand: Math.round(entry.demand / entry.count),
+      emerging: [...entry.skills.entries()].filter(([, value]) => value >= 75).slice(0, 2).map(([skill]) => skill),
+    }))
+  }, [filteredIndustryDemand])
+
+  const roleRequirementView = useMemo(() => {
+    const roleName = selectedIndustryRole === 'All Roles' ? 'Data Analyst' : selectedIndustryRole
+    return skillRequirementProfiles[roleName] ?? skillRequirementProfiles['Data Analyst']
+  }, [selectedIndustryRole])
+
+  const emergingSkills = useMemo(() => {
+    const skillMap = new Map()
+
+    filteredIndustryDemand.forEach((item) => {
+      const current = skillMap.get(item.skill) ?? {
+        skill: item.skill,
+        demand: 0,
+        trend: 0,
+        roles: new Set(),
+        districts: new Set(),
+        count: 0,
+      }
+      current.demand += item.demand
+      current.trend = Math.max(current.trend, item.trend)
+      current.roles.add(item.role)
+      current.districts.add(item.district)
+      current.count += 1
+      skillMap.set(item.skill, current)
+    })
+
+    return [...skillMap.values()]
+      .map((entry) => ({
+        skill: entry.skill,
+        demand: Math.round(entry.demand / entry.count),
+        trend: entry.trend,
+        roles: [...entry.roles].slice(0, 2),
+        districts: [...entry.districts].slice(0, 2),
+      }))
+      .filter((entry) => entry.trend >= 12)
+      .sort((a, b) => b.trend - a.trend)
+      .slice(0, 5)
+  }, [filteredIndustryDemand])
+
+  const skillInsightData = useMemo(() => {
+    const skillName = topIndustrySkills.some((item) => item.skill === selectedDemandSkill)
+      ? selectedDemandSkill
+      : topIndustrySkills[0]?.skill ?? 'Python'
+
+    const skillRecords = filteredIndustryDemand.filter((item) => item.skill === skillName)
+    const maxDemand = skillRecords.reduce((max, item) => Math.max(max, item.demand), 0)
+    const primaryRoles = [...new Set(skillRecords.map((item) => item.role))]
+    const highestDemandDistrict = [...skillRecords].sort((a, b) => b.demand - a.demand)[0]?.district ?? 'Pune'
+    const proficiency = [...skillRecords].sort((a, b) => b.demand - a.demand)[0]?.proficiency ?? 'Intermediate'
+
+    return {
+      skill: skillName,
+      demand: maxDemand,
+      roles: primaryRoles,
+      district: highestDemandDistrict,
+      proficiency,
+      status: maxDemand >= 80 ? 'High' : maxDemand >= 70 ? 'Moderate' : 'Emerging',
+      relatedSkills: [...new Set(skillRecords.flatMap((item) => item.relatedSkills))].slice(0, 4),
+    }
+  }, [filteredIndustryDemand, selectedDemandSkill, topIndustrySkills])
+
+  const insightsSummary = useMemo(() => {
+    const skillLeader = topIndustrySkills[0]
+    const topRole = roleDemandOverview[0]
+    const districtLeader = districtDemandOverview[0]
+
+    return [
+      `${skillLeader?.skill ?? 'Python'} shows high demand in ${districtLeader?.district ?? 'Pune'} but remains underrepresented in some current training pathways.`,
+      `${topRole?.role ?? 'Data Analyst'} roles show strong hiring pressure for ${skillLeader?.skill ?? 'Python'} and related applied skills.`,
+      `${districtLeader?.district ?? 'Pune'} remains a leading market for ${districtLeader?.topSkills?.[0] ?? 'Data Analytics'} and ${districtLeader?.topSkills?.[1] ?? 'Cloud Computing'} demand.`,
+      'EV and cloud-related demand remains concentrated in battery systems, diagnostics and secure deployment capability.'
+    ]
+  }, [districtDemandOverview, roleDemandOverview, topIndustrySkills])
+
+  const demandKpis = useMemo(() => {
+    const uniqueSkills = new Set(filteredIndustryDemand.map((item) => item.skill)).size
+    const uniqueRoles = new Set(filteredIndustryDemand.map((item) => item.role)).size
+    const emergingCount = emergingSkills.length
+    const districtCount = new Set(filteredIndustryDemand.map((item) => item.district)).size
+
+    return [
+      { label: 'In-Demand Skills', value: uniqueSkills },
+      { label: 'High-Demand Roles', value: uniqueRoles },
+      { label: 'Emerging Skills', value: emergingCount },
+      { label: 'Districts Analyzed', value: districtCount },
+    ]
+  }, [emergingSkills, filteredIndustryDemand])
+
+  const renderIndustryDemand = (
+    <main className="mt-6 space-y-6">
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Industry Demand Intelligence</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">Monitor emerging job roles, skills, locations and proficiency requirements from industry-demand signals.</h2>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-sky-700">AI-Powered Labour Market Intelligence</span>
+            <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500">Prototype dataset — representative industry-demand signals</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="grid gap-4 xl:grid-cols-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">District</label>
+            <select
+              value={selectedIndustryDistrict}
+              onChange={(event) => setSelectedIndustryDistrict(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-sky-400"
+            >
+              {['All Districts', 'Pune', 'Mumbai', 'Nashik', 'Nagpur'].map((district) => (
+                <option key={district} value={district}>{district}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Industry Sector</label>
+            <select
+              value={selectedIndustrySector}
+              onChange={(event) => setSelectedIndustrySector(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-sky-400"
+            >
+              {['All Sectors', 'IT & Software', 'Cybersecurity', 'EV & Automotive', 'Data & Analytics', 'Cloud Computing'].map((sector) => (
+                <option key={sector} value={sector}>{sector}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Job Role</label>
+            <select
+              value={selectedIndustryRole}
+              onChange={(event) => setSelectedIndustryRole(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-sky-400"
+            >
+              {['All Roles', 'Data Analyst', 'Cloud Engineer', 'Cybersecurity Analyst', 'EV Technician'].map((role) => (
+                <option key={role} value={role}>{role}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Time Period</label>
+            <select
+              value={selectedIndustryPeriod}
+              onChange={(event) => setSelectedIndustryPeriod(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none focus:border-sky-400"
+            >
+              {['Current', 'Emerging'].map((period) => (
+                <option key={period} value={period}>{period}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {demandKpis.map((item) => (
+          <div key={item.label} className="rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{item.label}</p>
+            <p className="mt-4 text-4xl font-bold tracking-tight text-slate-900">{item.value}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-slate-900">Top In-Demand Skills</h3>
+            <span className="rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-700">Ranked</span>
+          </div>
+
+          <div className="mt-6 space-y-4">
+            {topIndustrySkills.map((item, index) => (
+              <button
+                key={item.skill}
+                type="button"
+                onClick={() => setSelectedDemandSkill(item.skill)}
+                className="block w-full rounded-2xl border border-slate-200 bg-slate-50 p-3 text-left transition hover:border-sky-200 hover:bg-sky-50"
+              >
+                <div className="mb-2 flex items-center justify-between text-sm text-slate-700">
+                  <span className="font-semibold text-slate-900">#{index + 1} {item.skill}</span>
+                  <span className="font-bold text-slate-900">{item.demand}%</span>
+                </div>
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200">
+                  <div className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500" style={{ width: `${item.demand}%` }} />
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Demand Insight Panel</p>
+          <h3 className="mt-2 text-2xl font-semibold text-slate-900">{skillInsightData.skill}</h3>
+
+          <div className="mt-5 rounded-2xl border border-sky-100 bg-sky-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Industry Demand</p>
+            <p className="mt-2 text-4xl font-bold text-slate-900">{skillInsightData.demand}%</p>
+          </div>
+
+          <div className="mt-5 space-y-4 text-sm text-slate-700">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Primary Roles</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {skillInsightData.roles.map((role) => (
+                  <button
+                    key={role}
+                    type="button"
+                    onClick={() => setSelectedIndustryRole(role)}
+                    className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700"
+                  >
+                    {role}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Highest Demand District</p>
+              <p className="mt-2 text-base font-semibold text-slate-900">{skillInsightData.district}</p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Required Proficiency</p>
+              <p className="mt-2 text-base font-semibold text-slate-900">{skillInsightData.proficiency}</p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Demand Status</p>
+              <p className="mt-2 text-base font-semibold text-slate-900">{skillInsightData.status}</p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Related Skills</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {skillInsightData.relatedSkills.map((relatedSkill) => (
+                  <span key={relatedSkill} className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">{relatedSkill}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Why this matters</p>
+            <p className="mt-2 text-sm leading-6 text-slate-700">
+              {skillInsightData.skill} appears as a high-demand skill for {skillInsightData.roles[0] ?? 'analytics-related'} roles in the representative prototype dataset.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">High-Demand Job Roles</h3>
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+          {roleDemandOverview.map((role) => (
+            <button
+              key={role.role}
+              type="button"
+              onClick={() => {
+                setSelectedIndustryRole(role.role)
+                setSelectedDemandSkill(role.topSkills[0] ?? 'Python')
+              }}
+              className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 text-left transition hover:border-sky-200 hover:bg-sky-50"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-lg font-semibold text-slate-900">{role.role}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{role.sector}</p>
+                </div>
+                <span className="text-xl font-bold text-slate-900">{role.demand}%</span>
+              </div>
+
+              <div className="mt-4 space-y-2 text-sm text-slate-700">
+                <p><span className="font-semibold text-slate-900">Top Skills:</span> {role.topSkills.join(', ')}</p>
+                <p><span className="font-semibold text-slate-900">Location:</span> {role.location}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">District Skill Demand</h3>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            {districtDemandOverview.map((district) => (
+              <button
+                key={district.district}
+                type="button"
+                onClick={() => setSelectedIndustryDistrict(district.district)}
+                className={`rounded-[22px] border p-4 text-left transition ${selectedIndustryDistrict === district.district ? 'border-sky-200 bg-sky-50' : 'border-slate-200 bg-slate-50 hover:border-slate-300'}`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-lg font-semibold text-slate-900">{district.district}</p>
+                  <span className="text-sm font-bold text-slate-900">{district.demand}%</span>
+                </div>
+                <div className="mt-4 space-y-2 text-sm text-slate-700">
+                  <p><span className="font-semibold text-slate-900">Top roles:</span> {district.roles.join(', ')}</p>
+                  <p><span className="font-semibold text-slate-900">Top skills:</span> {district.topSkills.join(', ')}</p>
+                  <p><span className="font-semibold text-slate-900">Emerging:</span> {district.emerging.length ? district.emerging.join(', ') : 'N/A'}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Industry Proficiency Requirements</h3>
+          <div className="mt-5 space-y-4">
+            {roleRequirementView.map((item) => (
+              <div key={item.skill} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-semibold text-slate-900">{item.skill}</p>
+                  <span className="rounded-full bg-sky-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-700">{item.proficiency}</span>
+                </div>
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200">
+                    <div
+                      className={`h-full rounded-full ${item.proficiency === 'Advanced' ? 'bg-gradient-to-r from-sky-500 to-cyan-500' : 'bg-gradient-to-r from-emerald-500 to-teal-500'}`}
+                      style={{ width: `${Math.min(item.demand, 100)}%` }}
+                    />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">{item.proficiency}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">Emerging Skills</h3>
+        <div className="mt-5 grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          {emergingSkills.map((skill) => (
+            <div key={skill.skill} className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-lg font-semibold text-slate-900">{skill.skill}</p>
+                <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-700">↑ Emerging</span>
+              </div>
+              <div className="mt-4 space-y-2 text-sm text-slate-700">
+                <p><span className="font-semibold text-slate-900">Current Demand:</span> {skill.demand}%</p>
+                <p><span className="font-semibold text-slate-900">Trend:</span> +{skill.trend}%</p>
+                <p><span className="font-semibold text-slate-900">Related Roles:</span> {skill.roles.join(', ')}</p>
+                <p><span className="font-semibold text-slate-900">Relevant Districts:</span> {skill.districts.join(', ')}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500">Trend values are representative prototype signals.</div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">Industry Demand Signals</h3>
+        <div className="mt-5 grid gap-4 md:grid-cols-4">
+          {['JOB POSTINGS', 'EMPLOYER INPUT', 'INDUSTRY / SECTOR TRENDS', 'PLACEMENT OUTCOMES'].map((source, index, items) => (
+            <div key={source} className="flex items-center justify-between gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <span className="text-sm font-semibold text-slate-800">{source}</span>
+              {index < items.length - 1 && <span className="text-lg text-slate-400">↓</span>}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-[24px] border border-sky-100 bg-gradient-to-br from-sky-50 to-white p-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">Mentora Demand Intelligence Engine</p>
+          <p className="mt-3 text-sm leading-6 text-slate-700">Planned production data sources</p>
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">Mentora Insights</h3>
+        <div className="mt-5 space-y-3">
+          {insightsSummary.map((insight, index) => (
+            <div key={insight} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+              <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-700">{index + 1}</span>
+              {insight}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-xl font-semibold text-slate-900">How Industry Demand Drives Mentora</h3>
+        <div className="mt-5 flex flex-col gap-3 text-sm text-slate-700 md:flex-row md:flex-wrap md:items-center md:justify-between">
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">INDUSTRY DEMAND</span>
+          <span className="text-slate-400">↓</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">SKILLS & ROLES</span>
+          <span className="text-slate-400">↓</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">LOCATION + PROFICIENCY</span>
+          <span className="text-slate-400">↓</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">SKILL GAP ANALYSIS</span>
+          <span className="text-slate-400">↓</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">CURRICULUM ALIGNMENT</span>
+          <span className="text-slate-400">↓</span>
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold">LEARNER PATHWAY</span>
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button type="button" onClick={() => setActiveNav('Skill Gap Analysis')} className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white">Analyze Skill Gaps</button>
+          <button type="button" onClick={() => setActiveNav('Curriculum Alignment')} className="rounded-full bg-gradient-to-r from-sky-600 to-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-200">View Curriculum Alignment</button>
+        </div>
+      </section>
+    </main>
+  )
+
   const renderCurriculumAlignment = (
     <main className="mt-6 space-y-6">
       <section className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
@@ -1435,7 +1984,9 @@ function App() {
                 ? renderCurriculumAlignment
                 : activeNav === 'Learner Pathway'
                   ? renderLearnerPathway
-                  : renderDashboard}
+                  : activeNav === 'Industry Demand'
+                    ? renderIndustryDemand
+                    : renderDashboard}
           </div>
         </div>
       </div>
